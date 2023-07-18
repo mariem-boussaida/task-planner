@@ -1,8 +1,18 @@
+import './App.css';
+import AppHeader from "./comporents/AppHeader"; 
+import SideMenu from "./comporents/SideMenu";
+import PageContent from "./comporents/PageContent";
+import AppFooter from "./comporents/AppFooter";
 
 function App() {
   return (
-    <div>
-      <h1>Hello world</h1>
+    <div className="App">
+    <AppHeader/>
+    <space>
+    <SideMenu></SideMenu>
+    <PageContent></PageContent>
+    </space>
+    <AppFooter/> 
     </div>
   );
 }
