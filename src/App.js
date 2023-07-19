@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
     <AppHeader/>
-    <space>
+    <space className="SideMenuAndageContent">
     <SideMenu></SideMenu>
     <PageContent></PageContent>
     </space>

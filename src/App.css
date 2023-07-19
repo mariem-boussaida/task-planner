@@ -19,3 +19,18 @@
     border-bottom: 1px solid rgba(0,0,0,0.5);
     /* background-color:rgb(204, 156, 248); */
 }
+.AppFooter{
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+  border-top: 1px solid rgba(0,0,0,0.5);
+  align-items: center;
+
+
+}
+.SideMenuAndageContent{
+  display:flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
