@@ -1,18 +1,21 @@
+import React from 'react';
 import './App.css';
-import AppHeader from "./comporents/AppHeader"; 
-import SideMenu from "./comporents/SideMenu";
-import PageContent from "./comporents/PageContent";
-import AppFooter from "./comporents/AppFooter";
+import AppHeader from "./Component/AppHeader"; 
+import SideMenu from "./Component/SideMenu";
+import PageContent from "./Component/PageContent";
 
 function App() {
   return (
     <div className="App">
-    <AppHeader/>
-    <space className="SideMenuAndageContent">
-    <SideMenu></SideMenu>
-    <PageContent></PageContent>
-    </space>
-    <AppFooter/> 
+      <div className="AppGlass">
+        <AppHeader />
+        <div className='SideMenu'>
+        <SideMenu />
+        </div>
+        <div className="PageContent">
+          <PageContent />
+        </div>
+      </div>
     </div>
   );
 }
