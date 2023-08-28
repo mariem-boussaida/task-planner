@@ -1,3 +1,5 @@
+
+
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +9,22 @@
 .App{
     display: flex;
     flex-direction: column;
-    width: 100vw;
     height: 100vh;
+    background-color:rgb(245, 223, 226);
+    justify-content: center;
+    align-items: center;
   }
+  .AppGlass{
+    display: -ms-grid;
+    height: 97%;
+    width: 97%;
+    border-radius: 2rem;
+    background-color:#ffff;
+    overflow: hidden;
+    grid-template-columns: 11rem auto 20rem;
+
+  }
+
 .App-header{
     height: 50px;
     display: flex;
@@ -19,18 +34,23 @@
     border-bottom: 1px solid rgba(0,0,0,0.5);
     /* background-color:rgb(204, 156, 248); */
 }
-.AppFooter{
+.PageContent {
+position: relative;
+left: 88px;
+height: 100vh;
+width: calc(100% - 88px);
+top: 0;
+
+}
+.SideMenu{
+  position: fixed;
   display: flex;
-  height: 50px;
-  justify-content: space-evenly;
-  border-top: 1px solid rgba(0,0,0,0.5);
-  align-items: center;
+  /* flex-direction: column; */
+  width: 250px;
+  /* height: 100%; */
 
 
 }
-.SideMenuAndageContent{
-  display:flex;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
+
+
+
