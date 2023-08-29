@@ -21,9 +21,9 @@ function SideMenu() {
       <Menu className="Menuitem active" onClick={(item) => handleMenuClick(item.key)}>
         {[
           {
-            label: "My Task",
+            label: "Tasks",
             icon: <AppstoreAddOutlined />,
-            key: "/",
+            key: "/TaskPlanner",
           },
           {
             label: "My Profile",

@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@mui/icons-material": "^5.14.6",
+    "@mui/material": "^5.14.6",
+    "@mui/styled-engine": "^5.14.6",
     "@syncfusion/ej2-data": "^22.2.5",
     "@syncfusion/ej2-react-base": "^22.2.5",
     "@syncfusion/ej2-react-buttons": "^22.2.9",
@@ -20,8 +24,11 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-materialize": "^3.10.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
