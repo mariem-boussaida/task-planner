@@ -4,7 +4,6 @@ import React from "react";
 import {
   AppstoreAddOutlined,
   UserAddOutlined,
-  CreditCardOutlined,
   CalendarOutlined,
   LogoutOutlined,
 } from "@ant-design/icons"; // Import the required Ant Design icons
@@ -29,11 +28,6 @@ function SideMenu() {
             label: "My Profile",
             key: "/MyProfile",
             icon: <UserAddOutlined />,
-          },
-          {
-            label: "New Task",
-            key: "/NewTask",
-            icon: <CreditCardOutlined />,
           },
           {
             label: "Today",
