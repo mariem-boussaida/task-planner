@@ -2,3 +2,6 @@
     text-decoration: line-through;
     color: #db3545;
 }
+.card card-body{
+    padding : 10px !important ;
+}
