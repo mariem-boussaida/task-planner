@@ -37,7 +37,6 @@
 .PageContent {
 position: relative;
 padding: 4px 20px 4px 20px;
-
 left: 88px;
 height: 100vh;
 width: calc(100% - 88px);
