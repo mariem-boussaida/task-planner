@@ -1,33 +1,31 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+
+import MyProfile from './pages/MyProfile';
+import Today from './pages/Today';
+import NotFound from './pages/NotFound';
+import LoginPage from "./pages/LoginPage";
+import TaskPlanner from "./pages/TaskPlanner";
+
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
+import CustomRoute from './routes/CustomRoutes';
+
 import './App.css';
-import AppHeader from "./Component/AppHeader"; 
-import SideMenu from "./Component/SideMenu";
-import PageContent from "./Component/PageContent";
-import LoginPage from "./Component/LoginPage";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
-
   return (
-      <div className="App">
-        {loggedIn ? (
-              <div className="AppGlass">
-                <AppHeader />
-                <div className='SideMenu'>
-                  <SideMenu />
-                </div>
-                <div className="PageContent">
-                  <PageContent />
-                </div>
-              </div>
-        ) : (
-            <LoginPage onLogin={handleLogin} />
-        )}
-      </div>
+    <div className="App">
+      <Router>
+        <Switch>
+          <PublicRoute exact path="/" component={LoginPage} />
+          <PrivateRoute path="/TaskPlanner" component={TaskPlanner} />
+          <PrivateRoute path="/MyProfile" component={MyProfile} />
+          <PrivateRoute path="/Today" component={Today} />
+          <CustomRoute component={NotFound} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

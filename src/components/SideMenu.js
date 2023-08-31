@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Menu } from "antd";
 import React from "react";
 import {
@@ -7,12 +7,19 @@ import {
   CalendarOutlined,
   LogoutOutlined,
 } from "@ant-design/icons"; // Import the required Ant Design icons
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/actions/userActionCreators";
 
 function SideMenu() {
-  const navigate = useNavigate();
-
+  const history = useHistory();
+  const dispatch = useDispatch()
+  
   const handleMenuClick = (key) => {
-    navigate(key);
+    if (key === '/Logout') {
+      dispatch(logout())
+    } else {
+      history.push(key)
+    }
   };
 
   return (

@@ -1,15 +1,20 @@
 // LoginPage.js
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { login } from '../redux/actions/userActionCreators';
+
 import './LoginPage.css';
 
-function LoginPage({ onLogin }) {
+function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleLogin = () => {
         // Simulate a successful login
         if (username === 'user' && password === 'password') {
-            onLogin();
+            dispatch(login({user: username}, 'the token goes here.'))
         }
     };
 

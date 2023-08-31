@@ -2,8 +2,9 @@
 import React, {Component} from 'react';
 import './TaskPlanner.css';
 import { v4 as uuidv4 } from 'uuid';
-import TodoInput from "./TodoInput";
-import TodoList from "./TodoList";
+import TodoInput from "../components/TodoInput";
+import TodoList from "../components/TodoList";
+import './style.css';
 
 class TaskPlanner extends Component {
     constructor(props) {
