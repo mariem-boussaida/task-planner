@@ -41,4 +41,10 @@
     background-color: #28a745;
     color: white;
   }
+
+
+.task-list-container {
+  max-height: 150px;
+  overflow-y: scroll;
+}
   

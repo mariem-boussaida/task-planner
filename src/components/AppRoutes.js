@@ -6,8 +6,6 @@ import Logout from '../pages/logout';
 import LoginPage from "../pages/login/LoginPage";
 import TaskPlanner from "./TaskPlanner";
 import SignUp from "../pages/register/SignUp";
-import Home from "../components/Home";
-
 function AppRoutes() {
   return (
     <Routes>

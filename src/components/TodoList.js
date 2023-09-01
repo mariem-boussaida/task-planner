@@ -1,47 +1,64 @@
-import React, { Component, Fragment } from 'react'
-import TodoItem from './TodoItem'
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+import TodoItem from './TodoItem';
 
 export default class TodoList extends Component {
+    handleDelete = async (id) => {
+        try {
+            await axios.delete(`/api/tasks/${id}`);
+            this.props.fetchTasks();
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
+    };
+
+    handleDoneTask = async (id, completed) => {
+        const updatedTask = { completed: !completed }; // Toggle between completed and uncompleted
+
+        try {
+            await axios.put(`/api/tasks/${id}`, updatedTask);
+            this.props.fetchTasks(); // Fetch the updated tasks to reflect changes
+        } catch (error) {
+            console.error('Error updating task:', error);
+        }
+    };
+
     render() {
         const {
             items,
             updateTodosToShow,
-            clearList,
-            handleDelete,
+            handleDeleteAllTasks,
             handleEdit,
-            handleDoneTask,
-            handleDeleteDoneTasks
-        } = this.props
+            handleDeleteDoneTasks,
+        } = this.props;
 
         return (
             <Fragment>
-                <h3 className="text-center">
-                    TodoList
-                </h3>
+                <h4 className="text-center">Todo list</h4>
 
                 <div className="row">
                     <div className="col-md-4">
-                        <button 
+                        <button
                             type="button"
-                            className="btn btn-info btn-block mt-1"
+                            className="btn btn-sm btn-info btn-block mt-1"
                             onClick={() => updateTodosToShow("all")}
                         >
                             All
                         </button>
                     </div>
                     <div className="col-md-4">
-                        <button 
+                        <button
                             type="button"
-                            className="btn btn-info btn-block mt-1"
+                            className="btn btn-sm btn-info btn-block mt-1"
                             onClick={() => updateTodosToShow("done")}
                         >
                             Done
                         </button>
                     </div>
                     <div className="col-md-4">
-                        <button 
+                        <button
                             type="button"
-                            className="btn btn-info btn-block mt-1"
+                            className="btn btn-sm btn-info btn-block mt-1"
                             onClick={() => updateTodosToShow("todo")}
                         >
                             Todo
@@ -49,48 +66,43 @@ export default class TodoList extends Component {
                     </div>
                 </div>
 
-                {
-                items.length === 0 ? '' :
-                    <ul className="list-group my-5">
-                        {
-                            items.map(item => {
-                                return (
-                                    <TodoItem
-                                        key={item.id}
-                                        id={item.id}
-                                        title={item.title}
-                                        completed={item.completed}
-                                        handleDelete={() => handleDelete(item.id)}
-                                        handleEdit={() => handleEdit(item.id)}
-                                        handleDoneTask={handleDoneTask}
-                                    />
-                                )
-                            })
-                        }
-
-                        <div className="row mt-4">
-                            <div className="col-md-6">
-                                <button 
-                                    type="button"
-                                    className="btn btn-danger btn-block mt-1"
-                                    onClick={handleDeleteDoneTasks}
-                                >
-                                    Delete done tasks
-                                </button>
-                            </div>
-                            <div className="col-md-6">
-                                <button 
-                                    type="button"
-                                    className="btn btn-danger btn-block mt-1"
-                                    onClick={clearList}
-                                >
-                                    Delete all tasks
-                                </button>
-                            </div>
-                        </div>
+                <div className="task-list-container my-2">
+                    <ul className="list-group">
+                        {items.map((item) => (
+                            <TodoItem
+                                key={item._id}
+                                id={item._id}
+                                title={item.title}
+                                completed={item.completed}
+                                handleDelete={() => this.handleDelete(item._id)}
+                                handleEdit={() => handleEdit(item._id)}
+                                handleDoneTask={() => this.handleDoneTask(item._id, item.completed)}
+                            />
+                        ))}
                     </ul>
-                }
+                </div>
+
+                <div className="row mt-1">
+                    <div className="col-md-6">
+                        <button
+                            type="button"
+                            className="btn btn-sm btn-danger btn-block mt-1"
+                            onClick={handleDeleteDoneTasks}
+                        >
+                            Delete done tasks
+                        </button>
+                    </div>
+                    <div className="col-md-6">
+                        <button
+                            type="button"
+                            className="btn btn-sm btn-danger btn-block mt-1"
+                            onClick={handleDeleteAllTasks}
+                        >
+                            Delete all tasks
+                        </button>
+                    </div>
+                </div>
             </Fragment>
-        )
+        );
     }
 }
