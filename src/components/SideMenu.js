@@ -1,75 +1,85 @@
-import { useHistory } from "react-router-dom";
-import { Menu } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import { Menu, Drawer } from "antd";
 import {
   AppstoreAddOutlined,
   UserAddOutlined,
   CalendarOutlined,
   LogoutOutlined,
-} from "@ant-design/icons"; // Import the required Ant Design icons
+  MenuOutlined,
+} from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/actions/userActionCreators";
 
 function SideMenu() {
   const history = useHistory();
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
   const handleMenuClick = (key) => {
-    if (key === '/Logout') {
-      dispatch(logout())
+    if (key === "/Logout") {
+      dispatch(logout());
     } else {
-      history.push(key)
+      history.push(key);
+      onClose(); // Close the sidebar when an item is clicked
     }
   };
 
+  const menuItems = [
+    {
+      label: "Tasks",
+      icon: <AppstoreAddOutlined />,
+      key: "/TaskPlanner",
+    },
+    {
+      label: "My Profile",
+      key: "/MyProfile",
+      icon: <UserAddOutlined />,
+    },
+    {
+      label: "Today",
+      key: "/Today",
+      icon: <CalendarOutlined />,
+    },
+    {
+      label: "Logout",
+      key: "/Logout",
+      icon: <LogoutOutlined />,
+    },
+  ];
+
   return (
-    <div className="SideMenu">
-      <Menu className="Menuitem active" onClick={(item) => handleMenuClick(item.key)}>
-        {[
-          {
-            label: "Tasks",
-            icon: <AppstoreAddOutlined />,
-            key: "/TaskPlanner",
-          },
-          {
-            label: "My Profile",
-            key: "/MyProfile",
-            icon: <UserAddOutlined />,
-          },
-          {
-            label: "Today",
-            key: "/Today",
-            icon: <CalendarOutlined />,
-          },
-          {
-            label: "Logout",
-            key: "/Logout",
-            icon: <LogoutOutlined />,
-          },
-        ].map((item) => (
-          <Menu.Item key={item.key} icon={item.icon}>
-            {item.label}
-          </Menu.Item>
-        ))}
-      </Menu>
-      <div>
-        <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
-          <li>
-            <a className="dropdown-item" href="/MyProfile">
-              Profile
-            </a>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <a className="dropdown-item" href="/Logout">
-              Sign out
-            </a>
-          </li>
-        </ul>
+      <div className="SideMenu">
+        <MenuOutlined className="menu-icon" onClick={showDrawer} />
+        <Drawer
+            title="Menu"
+            placement="left"
+            onClose={onClose}
+            visible={visible}
+            width={200}
+        >
+          <Menu
+              theme="dark"
+              mode="vertical"
+              onClick={(item) => handleMenuClick(item.key)}
+              selectedKeys={[]}
+          >
+            {menuItems.map((item) => (
+                <Menu.Item key={item.key} icon={item.icon}>
+                  {item.label}
+                </Menu.Item>
+            ))}
+          </Menu>
+        </Drawer>
       </div>
-    </div>
   );
 }
 

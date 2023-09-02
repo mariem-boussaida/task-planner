@@ -14,9 +14,6 @@
     };
     
   }
-  .container {
-    margin-top: 3rem;
-  }
   
   .card {
     border: none;
@@ -102,10 +99,6 @@
   .rounded-end {
     border-radius: 0 0.5rem 0.5rem 0;
   }
-  /* Adjust container styling */
-.container {
-  margin-top: 3rem;
-}
 
 /* Center the calendar */
 .fc {

@@ -1,0 +1,31 @@
+/* AppHeader.css */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #001529;
+    color: #fff;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+}
+
+.title {
+    color: #fff;
+    margin: 0;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 16px;
+}
