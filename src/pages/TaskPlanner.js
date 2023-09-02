@@ -103,7 +103,6 @@ class TaskPlanner extends Component {
     handleDeleteAllTasks = async () => {
         try {
             await axios.delete('/api/tasks/all');
-
             this.setState({
                 items: [],
                 message: 'All tasks deleted successfully',
@@ -119,7 +118,7 @@ class TaskPlanner extends Component {
         const idsToDelete = completedTasks.map((task) => task._id);
 
         try {
-            await axios.delete('/api/tasks/completed', { data: { ids: idsToDelete } });
+            await axios.delete('/api/tasks/completed', { data: { taskIds: idsToDelete } });
             const updatedItems = items.filter((item) => !item.completed);
             this.setState({
                 items: updatedItems,

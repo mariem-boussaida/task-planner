@@ -45,6 +45,6 @@
 
 .task-list-container {
   max-height: 150px;
-  overflow-y: scroll;
+  overflow: auto;
 }
   
